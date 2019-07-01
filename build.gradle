@@ -1,0 +1,48 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.6.RELEASE'
+    id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.durian'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+    mavenCentral()
+}
+
+dependencies {
+    //api或compile关键字引用的包对于其他module来说是可见的，而implementation关键字引用的包对于其他module来说是不可见的。
+    implementation 'org.springframework.boot:spring-boot-starter-quartz'
+//    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+//    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.0.1'
+    implementation 'com.google.guava:guava:28.0-jre'
+    implementation 'cn.hutool:hutool-all:4.5.16'
+    compile group: 'com.alibaba', name: 'druid-spring-boot-starter', version: '1.1.10'
+    compile group: 'com.baomidou', name: 'mybatis-plus-boot-starter', version: '3.1.2'
+    compile group: 'com.baomidou', name: 'mybatis-plus-generator', version: '3.1.2'
+    developmentOnly group: 'org.apache.velocity', name: 'velocity-engine-core', version: '2.1'
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    runtimeOnly 'mysql:mysql-connector-java'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+}
