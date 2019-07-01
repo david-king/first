@@ -33,4 +33,6 @@ out/
 
 ### king ###
 /catalina.*/
+.DS_Store
+/gradle/
 
